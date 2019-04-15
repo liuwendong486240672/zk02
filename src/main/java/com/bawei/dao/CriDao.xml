@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bawei.dao.CriDao">
+	<select id="getList" resultType="Map">
+		select * from tb_criminal a 
+		where a.name like '%${value}%'
+	</select>
+	
+	<!-- //完成“添加”功能 -->
+	<insert id="add">
+		insert into tb_criminal set name=#{name},card=#{card},age=${age},sex=#{sex},
+		descs=#{descs}
+	</insert>
+	<!--删除功能  -->
+	<delete id="del">
+		delete from tb_criminal where id = ${value}
+	</delete>
+	<select id="getById" resultType="Crimi">
+		select * from tb_criminal where id = ${value}
+	</select>
+	<!-- //(6)完成修改功能。 -->
+	<update id="update">
+		update tb_criminal set name=#{name},card=#{card},age=${age},sex=#{sex},
+		descs=#{descs} where id=${id}
+	</update>
+</mapper>
+
+
+
+
